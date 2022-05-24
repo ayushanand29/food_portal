@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Login V1</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="{{ url_for('static',filename='images/icons/favicon.ico')}}" />
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/animate/animate.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/css-hamburgers/hamburgers.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/select2/select2.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css')}}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css')}}">
+    <link id="changeable-colors" rel="stylesheet" href="{{ url_for('static',filename='css/colors/orange.css')}}" />
+    <script src="{{ url_for('static',filename='js/modernizer.js')}}"></script>
+</head>
+<body>
+	    <div id="site-header">
+        <header id="header" class="header-block-top">
+            <div class="container">
+                <div class="row">
+                    <div class="main-menu">
+                        <nav class="navbar navbar-default" id="mainNav">
+                            <div id="navbar">
+                                <ul class="nav navbar-nav navbar-right">
+                                    
+                                    <li><a href="http://127.0.0.1:5000/orders">Orders</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+
+				{% for item in data %}
+				<div>
+					<div>
+						<div class="offer-item-v1">
+							<img src="{{ url_for('static',filename='images/menu-item-thumbnail-04.jpg')}}" alt="" class="img-responsive">
+							<div>
+								<h3>{{ item[1] }}</h3>
+								<h4>
+									{{ item[2] }}
+								</h4>
+								<h4>{{ item[3] }}</h4>
+							</div>
+							
+						</div>
+						<div class="container-login100-form-btn">
+									<a class="login100-form-btn" href="http://127.0.0.1:5000/restaurant/{{item[0]}}">Book Now</a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

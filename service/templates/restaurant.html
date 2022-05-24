@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
+    <title>Gusto</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css')}}">
+    <link id="changeable-colors" rel="stylesheet" href="{{ url_for('static',filename='css/colors/orange.css')}}" />
+    <script src="{{ url_for('static',filename='js/modernizer.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css')}}">
+</head>
+
+<body>
+    <div id="menu" class="menu-main pad-top-100 pad-bottom-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <h2 class="block-title text-center">
+                            {{res_name['name']}} Menu
+                        </h2>
+                        <p class="title-caption text-center">There are many variations of passages of Lorem Ipsum
+                            available, but the majority have suffered alteration in some form, by injected humour, or
+                            randomised words which don't look even slightly believable. </p>
+                    </div>
+                    <div class="tab-menu">
+                        <div class="slider slider-nav">
+                            <div class="tab-title-menu">
+                                <h2>STARTERS</h2>
+                                <p> <i class="flaticon-canape"></i> </p>
+                            </div>
+                            <div class="tab-title-menu">
+                                <h2>MAIN DISHES</h2>
+                                <p> <i class="flaticon-dinner"></i> </p>
+                            </div>
+                            <div class="tab-title-menu">
+                                <h2>DESERTS</h2>
+                                <p> <i class="flaticon-desert"></i> </p>
+                            </div>
+                            <div class="tab-title-menu">
+                                <h2>DRINKS</h2>
+                                <p> <i class="flaticon-coffee"></i> </p>
+                            </div>
+                        </div>
+                        <form method="post">
+
+                            <div class="slider slider-single">
+
+                                <div>
+                                    {% for item in data %}
+                                        {% if item['type'] == "STARTER" %}
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                                <div class="offer-item">
+                                                    <img src="{{ url_for('static',filename='images/menu-item-thumbnail-01.jpg')}}" alt="" class="img-responsive">
+                                                    <div>
+                                                        <h3>{{item['name']}}</h3>
+                                                        <p>
+                                                            {{item['description']}}
+                                                        </p>
+                                                        <input type="checkbox" name="starter" value='{{item['name']}}'>  Add to cart<br>
+                                                    </div>
+                                                    <span class="offer-price">₹ {{item['price']}}</span>
+                                                </div>
+                                            </div>
+                                            <!-- end col -->
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                
+                                <div>
+                                    {% for item in data %}
+                                        {% if item['type'] == "MAIN" %}
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                                <div class="offer-item">
+                                                    <img src="{{ url_for('static',filename='images/menu-item-thumbnail-04.jpg')}}" alt="" class="img-responsive">
+                                                    <div>
+                                                        <h3>{{item['name']}}</h3>
+                                                        <p>
+                                                            {{item['description']}}
+                                                        </p>
+                                                        <input type="checkbox" name="main" value='{{item['name']}}'>  Add to cart<br>
+                                                    </div>
+                                                    <span class="offer-price">₹ {{item['price']}}</span>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+
+                                <div>
+                                    {% for item in data %}
+                                        {% if item['type'] == "DESERT" %}
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                                <div class="offer-item">
+                                                    <img src="{{ url_for('static',filename='images/menu-item-thumbnail-07.jpg')}}" alt="" class="img-responsive">
+                                                    <div>
+                                                        <h3>{{item['name']}}</h3>
+                                                        <p>
+                                                            {{item['description']}}
+                                                        </p>
+                                                    <input type="checkbox" name="desert" value='{{item['name']}}'>  Add to cart<br>
+                                                    </div>
+                                                    <span class="offer-price">₹ {{item['price']}}</span>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+
+                                <div>
+                                    {% for item in data %}
+                                        {% if item['type'] == "DRINK" %}
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                                <div class="offer-item">
+                                                    <img src="{{ url_for('static',filename='images/menu-item-thumbnail-10.jpg')}}" alt="" class="img-responsive">
+                                                    <div>
+                                                        <h3>{{item['name']}}</h3>
+                                                        <p>
+                                                            {{item['description']}}
+                                                        </p>
+                                                    <input type="checkbox" name="drink" value='{{item['name']}}'>  Add to cart<br>
+                                                    </div>
+                                                    <span class="offer-price">₹ {{item['price']}}</span>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <input class="login100-form-btn" type="submit" value="Checkout">
+                        </form>
+                    </div>
+                    <!-- end tab-menu -->
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end menu -->
+<!-- <div id="reservation" class="reservations-main pad-top-100 pad-bottom-100">
+        <div class="container">
+            <div class="row">
+                <div class="form-reservations-box">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                            <h2 class="block-title text-center">
+                                Reservations
+                            </h2>
+                        </div>
+                        <h4 class="form-title">BOOKING FORM</h4>
+                        <p>PLEASE FILL OUT ALL REQUIRED* FIELDS. THANKS!</p>
+
+                        <form id="contact-form" method="post" class="reservations-box" name="contactform"
+                            action="mail.php">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <input type="text" name="form_name" id="form_name" placeholder="Name"
+                                        required="required" data-error="Firstname is required.">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <input type="email" name="email" id="email" placeholder="E-Mail ID"
+                                        required="required" data-error="E-mail id is required.">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <input type="text" name="phone" id="phone" placeholder="contact no.">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <select name="no_of_persons" id="no_of_persons" class="selectpicker">
+                                        <option selected disabled>No. Of persons</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <input type="text" name="date-picker" id="date-picker" placeholder="Date"
+                                        required="required" data-error="Date is required." />
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <input type="text" name="time-picker" id="time-picker" placeholder="Time"
+                                        required="required" data-error="Time is required." />
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <select name="preferred_food" id="preferred_food" class="selectpicker">
+                                        <option selected disabled>preferred food</option>
+                                        <option>Indian</option>
+                                        <option>Continental</option>
+                                        <option>Mexican</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <select name="occasion" id="occasion" class="selectpicker">
+                                        <option selected disabled>Occasion</option>
+                                        <option>Wedding</option>
+                                        <option>Birthday</option>
+                                        <option>Anniversary</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="reserve-book-btn text-center">
+                                    <button class="hvr-underline-from-center" type="submit" value="SEND"
+                                        id="submit">BOOK MY TABLE </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+         -->
+    <a href="#" class="scrollup" style="display: none;">Scroll</a>
+<!-- 
+    <section id="color-panel" class="close-color-panel">
+        <a class="panel-button gray2"><i class="fa fa-cog fa-spin fa-2x"></i></a>
+        <div class="segment">
+            <h4 class="gray2 normal no-padding">Color Scheme</h4>
+            <a title="orange" class="switcher orange-bg"></a>
+            <a title="strong-blue" class="switcher strong-blue-bg"></a>
+            <a title="moderate-green" class="switcher moderate-green-bg"></a>
+            <a title="vivid-yellow" class="switcher vivid-yellow-bg"></a>
+        </div>
+    </section> -->
+
+    <!-- ALL JS FILES -->
+    <script src="{{ url_for('static',filename='js/all.js')}}"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
+    <!-- ALL PLUGINS -->
+    <script src="{{ url_for('static',filename='js/custom.js')}}"></script>
+</body>
+
+</html>

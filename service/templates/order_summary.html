@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Login V1</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="{{ url_for('static',filename='images/icons/favicon.ico')}}" />
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/animate/animate.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/css-hamburgers/hamburgers.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/select2/select2.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css')}}">
+</head>
+
+<body>
+	<div class="limiter">
+		<div class="container-login100">
+			<div >
+				<form method="post">
+				<div class="login100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">Item Name</th>
+								<th class="column2">Price</th>
+								<th class="column2">Quantity</th>
+							</tr>
+						</thead>
+						<tbody>{%for name, price in data.items()%}
+							<tr>
+								<td class="column1">{{name}}</td>
+								<td class="column2">{{price}}</td>
+								<td class="column1"><div><input type="number" name="quantity" placeholder="Quantity" value="{{name}}" min="1" max="5">
+								<input type="hidden" name="item_id" value="{{name}}"/>
+							</div></td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<div class="container-login100-form-btn">
+					<a style="text-decoration:none" href="http://127.0.0.1:5000/home" class="login100-form-btn">Go Back</a>
+				</div>
+				{%if data|length != 0%}
+					<div class="container-login100-form-btn">
+						<input class="login100-form-btn" type="submit" value="Proceed for Payment">
+					</div>
+				{%endif%}
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
